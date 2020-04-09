@@ -16,7 +16,7 @@ then
   `touch students.txt`
   echo "tmp:$1" >> students.txt
   echo "list:$1" >> students.txt
-  echo "The new student list: ${1}"
+  echo "The new students list: ${1}"
 
 # if no arg run the program on existing students
 else
