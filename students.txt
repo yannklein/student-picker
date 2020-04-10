@@ -1,2 +1,2 @@
-tmp:Baris,Pins,Nicole,Lukasz,Julien,Shogo,Yun
+tmp:Nicole,Julien,Shogo,Yun
 list:Baris,Pins,Nicole,Lukasz,Julien,Shogo,Yun

@@ -15,11 +15,8 @@ function new_students() {
   `touch students.txt`
   echo "tmp:$1" >> students.txt
   echo "list:$1" >> students.txt
-  echo " "
   echo "The new students list:"
   echo "${1}"
-  echo " "
-
 }
 
 function pick_student {
@@ -31,9 +28,7 @@ function pick_student {
     content=${line_array[1]}
     students+=($content)
   done < students.txt
-  echo ""
   echo "The remaining peeps: ${students[0]} "
-  echo ""
   # create an array of students
   IFS=',' read -r -a tmp_students_array <<< "${students[0]}"
   IFS=',' read -r -a list_students_array <<< "${students[1]}"
@@ -47,7 +42,6 @@ function pick_student {
   sleep 0.5
   printf "."
   sleep 0.5
-  echo " "
   echo " "
   echo "------------"
   echo " ${tmp_students_array[$rand_index]}! 🤓"
@@ -100,10 +94,8 @@ function students_list() {
     fi
   done
   picked_students_string=$(join_by , ${picked_students[@]})
-  echo " "
   echo "Here is an array of ${1} students:"
   echo " [${picked_students_string}] "
-  echo " "
 }
 
 if ! [ ${1+x} ]
