@@ -12,7 +12,7 @@ $ sh whosnext.sh Yann,Doug,Trouni
 Run the program with no arguments
 ```
 $ sh whosnext.sh
-
+>>
 >> The remaining peeps: Yann,Trouni,Doug
 >> 
 >> And I pick...
@@ -20,5 +20,16 @@ $ sh whosnext.sh
 >> ------------
 >>  Trouni! 🤓
 >> ------------
+>> 
 ```
 The list reinitialize itself automatically when there is no students left.
+
+## Get an array of students
+Run the program with an Integer (1,23,100,..)
+```
+$ sh whosnext.sh 2
+>>
+>> Here is an array of 2 students:
+>> ["Yann","Trouni"]
+>> 
+```
