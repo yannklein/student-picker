@@ -1,2 +1,2 @@
-tmp:Yann,Trouni,Doug
-list:Yann,Trouni,Doug
+tmp:Baris,Pins,Nicole,Lukasz,Julien,Shogo,Yun
+list:Baris,Pins,Nicole,Lukasz,Julien,Shogo,Yun
