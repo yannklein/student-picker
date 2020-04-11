@@ -70,6 +70,27 @@ function pick_student {
   echo "tmp:${tmp_joined_students}" >> $STUDENTS_FILE
   echo "list:${list_joined_students}" >> $STUDENTS_FILE
 }
+function reset_pick {
+  # read students from file
+  while IFS='' read -r line
+  do
+    IFS=':' read -r -a line_array <<< "$line"
+    header=${line_array[0]}
+    content=${line_array[1]}
+    if [ $header == "list" ]
+    then
+      students=$content
+    fi
+  done < $STUDENTS_FILE
+
+  # remove student.txt content
+  `rm $STUDENTS_FILE`
+  `touch $STUDENTS_FILE`
+  # add the new content
+  echo "tmp:${students}" >> $STUDENTS_FILE
+  echo "list:${students}" >> $STUDENTS_FILE
+  echo "Everyone's back in the picking game: ${students}"
+}
 
 function students_list() {
   # read students from file
@@ -106,12 +127,15 @@ if ! [ ${1+x} ]
 # if no arg run the program on existing students
 then
   pick_student
-
+elif [ $1 == "reset" ]
+  # if arg is reset
+then
+  reset_pick
 elif [[ "$1" =~ ^[0-9]+$ ]]
 # if arg existing get the students in an array
 then
- students_list ${1}
+  students_list ${1}
 else
 # if any other arguments (especially a comma spearated list)
- new_students ${1}
+  new_students ${1}
 fi
