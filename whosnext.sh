@@ -1,20 +1,24 @@
 #!/bin/zsh
 
+# setting path for students.txt (inside this folder)
+BASEDIR=$(dirname "$0")
+STUDENTS_FILE="$BASEDIR/students.txt"
+
 # function to join array element to string with separator
 function join_by { local IFS="${1}"; shift; echo "$*"; }
 
-
 function new_students() {
-  if [ -e students.txt ]
+  if [ -e $STUDENTS_FILE ]
   then
   # if existing erase the file content
     # echo "file exist! remove file"
-    `rm students.txt`
+    `rm $STUDENTS_FILE`
   fi
+  # create students file
+  `touch $STUDENTS_FILE`
   # add students in the file
-  `touch students.txt`
-  echo "tmp:$1" >> students.txt
-  echo "list:$1" >> students.txt
+  echo "tmp:$1" >> $STUDENTS_FILE
+  echo "list:$1" >> $STUDENTS_FILE
   echo "The new students list:"
   echo "${1}"
 }
@@ -27,7 +31,7 @@ function pick_student {
     # header=${line_array[0]}
     content=${line_array[1]}
     students+=($content)
-  done < students.txt
+  done < $STUDENTS_FILE
   echo "The remaining peeps: ${students[0]} "
   # create an array of students
   IFS=',' read -r -a tmp_students_array <<< "${students[0]}"
@@ -60,11 +64,11 @@ function pick_student {
   tmp_joined_students=$(join_by , ${tmp_students_array[@]})
   list_joined_students=$(join_by , ${list_students_array[@]})
   # remove student.txt content
-  `rm students.txt`
-  `touch students.txt`
+  `rm $STUDENTS_FILE`
+  `touch $STUDENTS_FILE`
   # add the new content
-  echo "tmp:${tmp_joined_students}" >> students.txt
-  echo "list:${list_joined_students}" >> students.txt
+  echo "tmp:${tmp_joined_students}" >> $STUDENTS_FILE
+  echo "list:${list_joined_students}" >> $STUDENTS_FILE
 }
 
 function students_list() {
@@ -78,7 +82,7 @@ function students_list() {
     then
       students=$content
     fi
-  done < students.txt
+  done < $STUDENTS_FILE
 
   IFS=',' read -r -a list_students <<< "${students}"
 
@@ -111,4 +115,3 @@ else
 # if any other arguments (especially a comma spearated list)
  new_students ${1}
 fi
-
