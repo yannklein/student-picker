@@ -1,2 +1,2 @@
-tmp:Nicole,Julien,Shogo,Yun
-list:Baris,Pins,Nicole,Lukasz,Julien,Shogo,Yun
+tmp:Hayato,Linlu,Akihiro,Cassiano,Liam,Ayako,Shinya,Davide,Yu
+list:Hayato,Linlu,Akihiro,Cassiano,Farrah,Liam,Ayako,Shinya,Davide,Yu
