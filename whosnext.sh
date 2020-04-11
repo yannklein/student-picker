@@ -92,6 +92,23 @@ function reset_pick {
   echo "Everyone's back in the picking game: ${students}"
 }
 
+function show_students {
+  # read students from file
+  while IFS='' read -r line
+  do
+    IFS=':' read -r -a line_array <<< "$line"
+    header=${line_array[0]}
+    content=${line_array[1]}
+    if [ $header == "list" ]
+    then
+      students=$content
+    fi
+  done < $STUDENTS_FILE
+
+  echo "The students list:"
+  echo "${students}"
+}
+
 function students_list() {
   # read students from file
   while IFS='' read -r line
@@ -131,6 +148,10 @@ elif [ $1 == "reset" ]
   # if arg is reset
 then
   reset_pick
+elif [ $1 == "list" ]
+  # if arg is list
+then
+  show_students
 elif [[ "$1" =~ ^[0-9]+$ ]]
 # if arg existing get the students in an array
 then

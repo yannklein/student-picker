@@ -24,6 +24,21 @@ $ sh whosnext.sh
 ```
 The list reinitialize itself automatically when there is no students left.
 
+## Reset the student pick, to pick back on the full list
+Run the program `reset`
+```
+$ sh whosnext.sh reset
+>> Everyone's back in the picking game: Yann,Trouni,Doug
+```
+
+## Show the student full list
+Run the program `list`
+```
+$ sh whosnext.sh list
+>> The students list:
+>> Yann,Trouni,Doug
+```
+
 ## Get an array of students
 Run the program with an Integer (1,23,100,..)
 ```
