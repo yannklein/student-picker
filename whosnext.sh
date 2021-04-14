@@ -39,18 +39,24 @@ function pick_student {
   # get one name random
   rand_index=$[$RANDOM % ${#tmp_students_array[@]}]
   printf "And I pick"
-  sleep 0.5
-  printf "."
-  sleep 0.5
-  printf "."
-  sleep 0.5
-  printf "."
-  sleep 0.5
-  echo " "
+  for number in {1..30}
+  do
+    student_index=$[$number % ${#tmp_students_array[@]}]
+    sleep_time=$(echo "0.001 + $number * 0.01" | bc)
+    # a_student=$[$RANDOM % ${#tmp_students_array[@]}]
+    printf '\n'
+    echo " 🤔 Let's piiick, ${tmp_students_array[$student_index]}"
+    # echo $sleep_time
+    echo "\007"
+    sleep $sleep_time
+    # printf '\e[1A\e[K'
+    printf '\e[1A\e[K'
+    printf '\e[1A\e[K'
+    printf '\e[1A\e[K'
+  done
   echo "------------"
   echo " ${tmp_students_array[$rand_index]}! 🤓"
   echo "------------"
-  echo ""
   # erase the picked name
   unset 'tmp_students_array[$rand_index]'
   # echo "The remaining students: ${tmp_students_array[@]}"
