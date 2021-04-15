@@ -47,10 +47,10 @@ function pick_student {
     printf '\n'
     echo " 🤔 Let's piiick, ${tmp_students_array[$student_index]}"
     # echo $sleep_time
-    echo "\007"
+    # echo ""
     sleep $sleep_time
     # printf '\e[1A\e[K'
-    printf '\e[1A\e[K'
+    # printf '\e[1A\e[K'
     printf '\e[1A\e[K'
     printf '\e[1A\e[K'
   done
