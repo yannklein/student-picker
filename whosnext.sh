@@ -217,11 +217,20 @@ elif [ $1 == "list" ]
   # if arg is list
 then
   show_students
+elif [ $1 == "set" ]
+# if arg is set
+then
+  new_students ${2}
 elif [[ "$1" =~ ^[0-9]+$ ]]
 # if arg existing get the students in an array
 then
   students_list ${1}
 else
 # if any other arguments (especially a comma spearated list)
-  new_students ${1}
+  echo 'Wrong argument! try one of the following:'
+  echo '- SET A STUDENT LIST:         whosnext set yann,trouni,sasha'
+  echo '- LIST UP THE CURRENT LIST:   whosnext list'
+  echo '- RESET THE STUDENT PICKS:    whosnext reset'
+  echo '- SELECT ONE STUDENT:         whosnext three'
+  echo '- SELECT 3 STUDENTS:          whosnext'
 fi
