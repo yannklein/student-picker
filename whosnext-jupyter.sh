@@ -23,61 +23,6 @@ function new_students() {
   echo "${1}"
 }
 
-function pick_three_student {
-  # read students from file
-  while IFS='' read -r line
-  do
-    IFS=':' read -r -a line_array <<< "$line"
-    # header=${line_array[0]}
-    content=${line_array[1]}
-    students+=($content)
-  done < $STUDENTS_FILE
-  echo "The remaining peeps: ${students[0]} "
-  # create an array of students
-  IFS=',' read -r -a tmp_students_array <<< "${students[0]}"
-  IFS=',' read -r -a list_students_array <<< "${students[1]}"
-  # get one name random
-  printf "And I pick 🤓"
-  for times in {1..3}
-  do
-    rand_index=$[$RANDOM % ${#tmp_students_array[@]}]
-    for number in {1..30}
-    do
-      student_index=$[$number % ${#tmp_students_array[@]}]
-      sleep_time=$(echo "0.0001 + $number * 0.001" | bc)
-      # a_student=$[$RANDOM % ${#tmp_students_array[@]}]
-      printf '\n'
-      echo " 🤔 Let's piiick, ${tmp_students_array[$student_index]}"
-      # echo $sleep_time
-      # echo ""
-      sleep $sleep_time
-      # printf '\e[1A\e[K'
-      # printf '\e[1A\e[K'
-      printf '\e[1A\e[K'
-      printf '\e[1A\e[K'
-    done
-    echo "👉 ${tmp_students_array[$rand_index]}!"
-    # erase the picked name
-    unset 'tmp_students_array[$rand_index]'
-  done
-  # echo "The remaining students: ${tmp_students_array[@]}"
-  # repopulating if no more students
-  if [ ${#tmp_students_array[@]} -eq 0 ]
-  then
-    tmp_students_array=${list_students_array[@]}
-  fi
-  # update student.txt
-  # create the lists with commas
-  tmp_joined_students=$(join_by , ${tmp_students_array[@]})
-  list_joined_students=$(join_by , ${list_students_array[@]})
-  # remove student.txt content
-  `rm $STUDENTS_FILE`
-  `touch $STUDENTS_FILE`
-  # add the new content
-  echo "tmp:${tmp_joined_students}" >> $STUDENTS_FILE
-  echo "list:${list_joined_students}" >> $STUDENTS_FILE
-}
-
 function pick_student {
   # read students from file
   while IFS='' read -r line
@@ -205,10 +150,6 @@ if ! [ ${1+x} ]
 # if no arg run the program on existing students
 then
   pick_student
-elif [ $1 == "three" ]
-  # if arg is three
-then
-  pick_three_student
 elif [ $1 == "reset" ]
   # if arg is reset
 then

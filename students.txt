@@ -1,2 +1,2 @@
-tmp:Janice,Phil,Noza,Tomohiro,Dylan
-list:Adrien,Janice,Phil,Noza,Tomohiro,Dylan
+tmp:reona,carl,cedrine,byron,erika,hiro,camille,tom,steven,gary,arisa,nico,olivier,steven
+list:keiran,reona,carl,cedrine,babin,laura,ref,byron,erika,hiro,camille,tom,steven,gary,shante,arisa,nico,olivier,steven,laeti
