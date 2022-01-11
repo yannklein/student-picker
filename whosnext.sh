@@ -97,7 +97,7 @@ function pick_student {
   for number in {1..30}
   do
     student_index=$[$number % ${#tmp_students_array[@]}]
-    sleep_time=$(echo "0.001 + $number * 0.01" | bc)
+    sleep_time=$(echo "0.0005 + $number * 0.005" | bc)
     # a_student=$[$RANDOM % ${#tmp_students_array[@]}]
     printf '\n'
     echo " 🤔 Let's piiick, ${tmp_students_array[$student_index]}"
